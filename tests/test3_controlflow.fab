@@ -1,0 +1,8 @@
+if (true) print "bbq";
+if (false) print "no"; else print "kfc";
+if (true)
+  if (false) print "kfc";
+  else print "bbq";
+for (var j = 0; j < 3; j = j + 1) {
+  print j;
+}

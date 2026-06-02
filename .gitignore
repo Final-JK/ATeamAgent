@@ -1,0 +1,45 @@
+# ── 빌드 결과물 ──────────────────────────────────────────────
+out/
+build/
+
+# MSVC 컴파일 중간 산출물
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.iobj
+*.ipdb
+
+# 실행파일 (out/ 제외한 루트에 생성된 경우 대비)
+*.exe
+*.dll
+
+# ── Visual Studio ─────────────────────────────────────────────
+.vs/
+*.vcxproj.user
+*.VC.db
+*.VC.opendb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ── CMake ──────────────────────────────────────────────────────
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+_deps/
+
+# ── OS ────────────────────────────────────────────────────────
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS (팀원 환경 대비)
+.DS_Store
+.AppleDouble
+.LSOverride

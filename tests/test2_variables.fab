@@ -1,0 +1,23 @@
+var a = 10;
+var b = 20;
+print a + b;
+a = a + 5;
+print a;
+var x = "global";
+{
+  var x = "inner";
+  print x;
+}
+print x;
+var count = 0;
+{
+  count = count + 1;
+}
+print count;
+var outer = "A";
+{
+  var inner = "B";
+  {
+    print outer + inner;
+  }
+}
