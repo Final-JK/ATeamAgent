@@ -21,12 +21,14 @@ private:
 
     // ── Statement grammar ──────────────────────────────────────────────────────
     StmtPtr declaration();
+    StmtPtr funcDeclaration();    // Ch.2: Func name(params) { body }
     StmtPtr varDeclaration();
     StmtPtr statement();
     StmtPtr printStatement();
     StmtPtr blockStatement();
     StmtPtr ifStatement();
     StmtPtr forStatement();
+    StmtPtr returnStatement();    // Ch.2: return [expr] ;
     StmtPtr expressionStatement();
 
     // ── Expression grammar ─────────────────────────────────────────────────────
@@ -36,6 +38,8 @@ private:
     ExprPtr addition();
     ExprPtr multiplication();
     ExprPtr unary();
+    ExprPtr call();               // Ch.2/3: 함수 호출 및 인덱스 접근 후위 처리
+    ExprPtr finishCall(ExprPtr callee); // Ch.2: CallExpr 완성
     ExprPtr primary();
 
     // ── Helpers ────────────────────────────────────────────────────────────────

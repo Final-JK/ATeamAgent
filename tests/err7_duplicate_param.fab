@@ -1,0 +1,5 @@
+// 오류: 파라미터 이름 중복
+// 기대 출력: [line 2] Static Error: Duplicate parameter name 'a'.
+Func foo(a, a) {
+    return a;
+}

@@ -1,0 +1,3 @@
+// 오류: 함수 외부에서 return 사용
+// 기대 출력: [line 3] Static Error: Can't return from top-level code.
+return 5;

@@ -1,0 +1,28 @@
+// Chapter 2: 함수 기본 기능 테스트
+
+// 기본 함수 선언 및 호출
+Func add(a, b) {
+    return a + b;
+}
+var ret = add(3, 7);
+print ret;
+
+// 재귀 호출 (팩토리얼)
+Func fact(n) {
+    if (n <= 1) return 1;
+    return n * fact(n - 1);
+}
+print fact(5);
+
+// 문자열 파라미터
+Func greet(name) {
+    print "Hello " + name;
+}
+greet("World");
+
+// return 없는 함수는 nil 반환
+Func noReturn() {
+    var x = 1;
+}
+var r = noReturn();
+print r;

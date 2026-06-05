@@ -1,0 +1,6 @@
+// 오류: 인자 개수 불일치 (파라미터 3개, 인자 2개)
+// 기대 출력: [line 5] Runtime Error: Expected 3 arguments but got 2.
+Func foo(a, b, c) {
+    return a + b + c;
+}
+foo(1, 2);

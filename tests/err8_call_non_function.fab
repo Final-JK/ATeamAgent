@@ -1,0 +1,4 @@
+// 오류: 함수가 아닌 대상 호출
+// 기대 출력: [line 3] Runtime Error: Can only call functions.
+var x = "hello";
+x();
