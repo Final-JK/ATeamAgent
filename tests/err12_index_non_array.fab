@@ -1,0 +1,4 @@
+// 오류: 배열이 아닌 대상에 인덱스 접근
+// 기대 출력: [line 4] Runtime Error: Only arrays support index access.
+var x = 10;
+print x[0];

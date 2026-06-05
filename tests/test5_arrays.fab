@@ -1,0 +1,19 @@
+// Chapter 3: 배열 기본 기능 테스트
+
+// 배열 생성 (크기 3, 모든 원소 nil로 초기화)
+var arr = Array(3);
+
+// 인덱스 쓰기
+arr[0] = 10;
+arr[1] = 20;
+arr[2] = 30;
+
+// 인덱스 읽기
+print arr[0];
+print arr[1];
+print arr[2];
+
+// 표현식 인덱스 쓰기
+var i = 2;
+arr[i - 1] = 7;
+print arr[1];

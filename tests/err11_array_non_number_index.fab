@@ -1,0 +1,4 @@
+// 오류: 인덱스가 숫자가 아닌 경우
+// 기대 출력: [line 4] Runtime Error: Index must be a number.
+var arr = Array(3);
+print arr["hello"];
