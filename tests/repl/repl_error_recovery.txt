@@ -1,0 +1,6 @@
+var x = 5;
+print undefined_var;
+print x;
+print 1 / 0;
+print x + 1;
+exit
