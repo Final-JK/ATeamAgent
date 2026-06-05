@@ -2,13 +2,16 @@
 #include <unordered_map>
 
 static const std::unordered_map<std::string, TokenType> keywords = {
-    {"var",   TokenType::VAR},
-    {"if",    TokenType::IF},
-    {"else",  TokenType::ELSE},
-    {"for",   TokenType::FOR},
-    {"print", TokenType::PRINT},
-    {"true",  TokenType::TRUE_KW},
-    {"false", TokenType::FALSE_KW},
+    {"var",    TokenType::VAR},
+    {"if",     TokenType::IF},
+    {"else",   TokenType::ELSE},
+    {"for",    TokenType::FOR},
+    {"print",  TokenType::PRINT},
+    {"true",   TokenType::TRUE_KW},
+    {"false",  TokenType::FALSE_KW},
+    {"Func",   TokenType::FUNC},    // Ch.2: 함수 선언 (대문자 F)
+    {"return", TokenType::RETURN},  // Ch.2: 함수 반환
+    {"Array",  TokenType::ARRAY_KW},// Ch.3: 배열 생성 (대문자 A)
 };
 
 Lexer::Lexer(std::string source) : source(std::move(source)) {}
@@ -41,14 +44,17 @@ void Lexer::addToken(TokenType type, Value literal) {
 void Lexer::scanToken() {
     char c = advance();
     switch (c) {
-    case '(': addToken(TokenType::LEFT_PAREN);  break;
-    case ')': addToken(TokenType::RIGHT_PAREN); break;
-    case '{': addToken(TokenType::LEFT_BRACE);  break;
-    case '}': addToken(TokenType::RIGHT_BRACE); break;
-    case ';': addToken(TokenType::SEMICOLON);   break;
-    case '+': addToken(TokenType::PLUS);        break;
-    case '-': addToken(TokenType::MINUS);       break;
-    case '*': addToken(TokenType::STAR);        break;
+    case '(': addToken(TokenType::LEFT_PAREN);    break;
+    case ')': addToken(TokenType::RIGHT_PAREN);   break;
+    case '{': addToken(TokenType::LEFT_BRACE);    break;
+    case '}': addToken(TokenType::RIGHT_BRACE);   break;
+    case '[': addToken(TokenType::LEFT_BRACKET);  break;  // Ch.3: 배열 인덱스 시작
+    case ']': addToken(TokenType::RIGHT_BRACKET); break;  // Ch.3: 배열 인덱스 종료
+    case ';': addToken(TokenType::SEMICOLON);     break;
+    case ',': addToken(TokenType::COMMA);         break;  // Ch.2: 파라미터/인수 구분자
+    case '+': addToken(TokenType::PLUS);          break;
+    case '-': addToken(TokenType::MINUS);         break;
+    case '*': addToken(TokenType::STAR);          break;
     case '/':
         if (match('/')) { while (peek() != '\n' && !isAtEnd()) advance(); }
         else            addToken(TokenType::SLASH);
