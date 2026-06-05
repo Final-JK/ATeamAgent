@@ -1,0 +1,6 @@
+// 디버그 모드 테스트용 타깃 파일
+var x = 10;
+var y = 20;
+print x + y;
+x = x * 2;
+print x;

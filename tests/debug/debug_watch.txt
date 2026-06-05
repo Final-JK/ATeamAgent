@@ -1,0 +1,6 @@
+watch x
+step
+step
+watches
+inspect
+step

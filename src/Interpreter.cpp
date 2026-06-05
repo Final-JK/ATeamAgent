@@ -12,7 +12,12 @@ void Interpreter::interpret(const std::vector<StmtPtr>& statements) {
     for (const auto& stmt : statements) execute(*stmt);
 }
 
-void Interpreter::execute(Stmt& stmt) { stmt.accept(*this); }
+void Interpreter::execute(Stmt& stmt) {
+    // Ch.5: 디버그 모드일 때 Stmt 실행 직전에 훅을 호출한다.
+    // stmtHook이 nullptr이면 일반 실행(파일/REPL 모드)으로 동작.
+    if (stmtHook) stmtHook(stmt);
+    stmt.accept(*this);
+}
 Value Interpreter::evaluate(Expr& expr) { return expr.accept(*this); }
 
 // ── Utilities ──────────────────────────────────────────────────────────────────

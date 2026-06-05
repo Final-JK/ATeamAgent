@@ -1,5 +1,6 @@
 #pragma once
 #include "RunnerBase.h"
+#include <fstream>
 #include <string>
 
 // Ch.5: 디버그 모드 Runner — 구현은 별도 커밋에서 추가
