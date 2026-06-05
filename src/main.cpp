@@ -1,53 +1,11 @@
+#include "InterpreterFactory.h"
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include "Lexer.h"
-#include "Parser.h"
-#include "Resolver.h"
-#include "Interpreter.h"
 
+// Ch.5: main은 모드 선택과 실행만 담당한다.
+// 파일/REPL/디버그 모드 로직은 각 Runner 클래스에 위임.
+// 모드 감지 규칙은 InterpreterFactory::create() 참조.
 int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        std::cerr << "Usage: interpreter <script>\n";
-        return 64;
-    }
-
-    std::ifstream file(argv[1]);
-    if (!file.is_open()) {
-        std::cerr << "Cannot open file: " << argv[1] << "\n";
-        return 66;
-    }
-
-    std::ostringstream ss;
-    ss << file.rdbuf();
-    std::string source = ss.str();
-
-    try {
-        Lexer lexer(source);
-        auto  tokens = lexer.scanTokens();
-
-        Parser parser(std::move(tokens));
-        auto   stmts = parser.parse();
-
-        Resolver resolver;
-        resolver.resolve(stmts);
-
-        Interpreter interpreter;
-        interpreter.interpret(stmts);
-
-    } catch (const LexError& e) {
-        std::cerr << e.what() << "\n";
-        return 65;
-    } catch (const ParseError& e) {
-        std::cerr << e.what() << "\n";
-        return 65;
-    } catch (const StaticError& e) {
-        std::cerr << e.what() << "\n";
-        return 65;
-    } catch (const RuntimeError& e) {
-        std::cerr << "[line " << e.token.line << "] Runtime Error: " << e.what() << "\n";
-        return 70;
-    }
-
-    return 0;
+    auto runner = InterpreterFactory::create(argc, argv);
+    if (!runner) return 64;  // 잘못된 인수 — 사용법 안내 후 종료
+    return runner->run();
 }

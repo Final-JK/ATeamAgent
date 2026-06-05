@@ -11,6 +11,11 @@ add_executable(interpreter
     src/Environment.cpp
     src/Resolver.cpp
     src/Interpreter.cpp
+    # Ch.5: 실행 모드 Runner 및 Factory
+    src/InterpreterFactory.cpp
+    src/FileRunner.cpp
+    src/ReplRunner.cpp
+    src/DebugRunner.cpp
 )
 
 target_include_directories(interpreter PRIVATE ${CMAKE_SOURCE_DIR}/src)

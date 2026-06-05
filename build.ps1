@@ -33,7 +33,12 @@ $sources = @(
     "src\Parser.cpp",
     "src\Environment.cpp",
     "src\Resolver.cpp",
-    "src\Interpreter.cpp"
+    "src\Interpreter.cpp",
+    # Ch.5: 실행 모드 Runner 및 Factory
+    "src\InterpreterFactory.cpp",
+    "src\FileRunner.cpp",
+    "src\ReplRunner.cpp",
+    "src\DebugRunner.cpp"
 )
 
 Write-Host "Compiling..." -ForegroundColor Cyan
